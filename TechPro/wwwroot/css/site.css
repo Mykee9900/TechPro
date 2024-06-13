@@ -15,6 +15,11 @@ body {
   margin-bottom: 60px;
 }
 
+.homeBody {
+  background-color: black;
+  color: rgba(0,140,186,1);
+}
+
 .logo {
   border-radius: 90px;
   border: solid 3px black;
@@ -23,7 +28,7 @@ body {
 }
 
 .homeBackground {
-  background-image: url(homeBackground.jpg);
+  background-image: url("homeBackground.jpg");
   background-size: contain;
   height: 150px;
   text-align: center;
@@ -31,6 +36,19 @@ body {
   color: white;
   font-family: fantasy;
   font-size: xxx-large;
+}
+
+.productsSection {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.productImg {
+  height: 250px;
+  border: solid rgba(0, 140, 186, 1) 10px;
+  border-radius: 20px;
+  margin: 15px;
 }
 
 @media (min-width: 768px) {
