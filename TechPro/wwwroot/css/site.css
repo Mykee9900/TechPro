@@ -11,8 +11,17 @@ html {
   min-height: 100%;
 }
 
-body {
-  margin-bottom: 60px;
+footer {
+  background-color: rgba(0, 140, 186, 1);
+  height: 60px;
+  text-align: center;
+  align-content: center;
+  margin-top: 15px;
+}
+
+footer a {
+  color: white;
+  text-decoration: underline;
 }
 
 .homeBody {
@@ -38,13 +47,18 @@ body {
   font-size: xxx-large;
 }
 
-.productsSection {
+.hSection h3{
+  text-align: center;
+  margin: 30px;
+}
+
+.imageSection {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
 }
 
-.productImg {
+.homeImg {
   height: 250px;
   border: solid rgba(0, 140, 186, 1) 10px;
   border-radius: 20px;
