@@ -11,8 +11,22 @@ html {
   min-height: 100%;
 }
 
-body {
-  margin-bottom: 60px;
+footer {
+  background-color: rgba(0, 140, 186, 1);
+  height: 60px;
+  text-align: center;
+  align-content: center;
+  margin-top: 15px;
+}
+
+footer a {
+  color: white;
+  text-decoration: underline;
+}
+
+.homeBody {
+  background-color: black;
+  color: rgba(0,140,186,1);
 }
 
 .logo {
@@ -23,7 +37,7 @@ body {
 }
 
 .homeBackground {
-  background-image: url(homeBackground.jpg);
+  background-image: url("homeBackground.jpg");
   background-size: contain;
   height: 150px;
   text-align: center;
@@ -31,6 +45,24 @@ body {
   color: white;
   font-family: fantasy;
   font-size: xxx-large;
+}
+
+.hSection h3{
+  text-align: center;
+  margin: 30px;
+}
+
+.imageSection {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.homeImg {
+  height: 250px;
+  border: solid rgba(0, 140, 186, 1) 10px;
+  border-radius: 20px;
+  margin: 15px;
 }
 
 @media (min-width: 768px) {
