@@ -2,6 +2,14 @@
     ViewData["Title"] = "About";
 }
 
-<div>
+<div onload="changeClass()">
     <h1>About Us</h1>
 </div>
+
+<script>
+    const changeClass = () => {
+    console.log("hello");
+        let currentTab = document.getElementById("about");
+        currentTab.addClass("active");
+        }
+</script>
