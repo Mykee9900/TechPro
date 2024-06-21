@@ -65,6 +65,22 @@ footer a {
   margin: 15px;
 }
 
+.founders {
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
+}
+
+.founderInfo {
+  width: 1000px;
+  padding: 20px;
+}
+
+.founderInfo h6 {
+  font-size: larger;
+  font-style: italic;
+}
+
 @media (min-width: 768px) {
   html {
     font-size: 16px;
