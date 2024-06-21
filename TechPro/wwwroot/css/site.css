@@ -50,6 +50,7 @@ footer a {
 .hSection h3{
   text-align: center;
   margin: 30px;
+  border-bottom: solid 3px;
 }
 
 .imageSection {
@@ -63,6 +64,28 @@ footer a {
   border: solid rgba(0, 140, 186, 1) 10px;
   border-radius: 20px;
   margin: 15px;
+}
+
+.founders {
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
+}
+
+.founderInfo {
+  width: 1000px;
+  padding: 20px;
+}
+
+.founderInfo h6 {
+  font-size: larger;
+  font-style: italic;
+}
+
+figure {
+  margin: 0 0 1rem;
+  width: 400px;
+  text-align: center;
 }
 
 @media (min-width: 768px) {
