@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/bootStrapTheme.css"/>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
 </head>
-<body>
+<body onload="activeTab()">
 <header>
     <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
         <div class="container-fluid">
@@ -16,23 +16,23 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarColor01">
-                <ul class="navbar-nav me-auto">
+                <ul class="navbar-nav me-auto" id="navList">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About
+                        <a class="nav-link"  id="about"  asp-controller="About" asp-action="Index" data-toggle="tab">About
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link" id="contact" href="#" data-toggle="tab">Contact</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Home</a>
+                        <a class="nav-link" id="home" asp-controller="Home" asp-action="Index">Home</a>
                         <span class="visually-hidden">(current)</span>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Products</a>
+                        <a class="nav-link" id="product" href="#">Products</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" role="button">Services</a>
+                        <a class="nav-link" id="service" href="#" role="button">Services</a>
                     </li>
                 </ul>
                 <form class="d-flex">
