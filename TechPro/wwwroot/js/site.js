@@ -19,8 +19,8 @@ const activeTab = () => {
             currentTab = document.getElementById("contact");
             currentTab.classList.add("nav-link", "active");
             break;
-        case "/Products":
-            currentTab = document.getElementById("products");
+        case "/Product":
+            currentTab = document.getElementById("product");
             currentTab.classList.add("nav-link", "active");
             break;
         case "/Services":
