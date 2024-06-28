@@ -91,6 +91,7 @@ footer a {
 
 .homeImg {
   height: 250px;
+  max-width: 350px;
   border: solid rgba(0, 140, 186, 1) 10px;
   border-radius: 20px;
   margin: 15px;

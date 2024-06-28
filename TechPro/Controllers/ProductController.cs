@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-
 namespace TechPro.Controllers;
 
 public class ProductController : Controller
