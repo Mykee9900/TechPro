@@ -59,6 +59,14 @@ footer a {
   margin: 30px 30px 75px 30px;
 }
 
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
 .logo {
   border-radius: 90px;
   border: solid 3px black;
