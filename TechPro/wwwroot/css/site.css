@@ -24,12 +24,12 @@ footer a {
   text-decoration: underline;
 }
 
-.homeBody, .aboutBody, .contactBody, .productBody {
+.homeBody, .aboutBody, .contactBody, .productBody, .servicesBody {
   background-color: black;
   color: rgba(0,140,186,1);
 }
 
-.aboutBody, .contactBody, .productBody {
+.aboutBody, .contactBody, .productBody, .servicesBody {
   text-align: center;
 }
 
@@ -43,7 +43,7 @@ footer a {
   align-items: center;
 }
 
-.aboutBody h1, .contactBody h1, .productBody h1 {
+.aboutBody h1, .contactBody h1, .productBody h1, .servicesBody h1 {
   margin: 30px 0 30px 0;
   color: white;
 
