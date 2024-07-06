@@ -204,7 +204,7 @@ figure {
   width: 100%;
   margin-bottom:10px;
   opacity: 0.8;
-}
+}  
 
 .chat-popup {
   display: none;
@@ -225,6 +225,9 @@ figure {
   opacity: 1;
 }
 
+#cartPopup {
+  display: none;
+}
 
 @media (min-width: 768px) {
   html {

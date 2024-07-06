@@ -40,3 +40,15 @@ const openForm = () => {
 const closeForm = () => {
     document.getElementById("myForm").style.display = "none";
 }
+
+// code is not reading the if statements correctly
+const cartPopUP = () => {
+    let element = document.getElementById("cartPopup");
+    if (getComputedStyle(element).display === "block") {
+        document.getElementById("cartPopup").style.display = "none";
+    } 
+    else if (getComputedStyle(element).display === "none") {
+        document.getElementById("cartPopup").style.display = "block";
+    }
+}
+    
