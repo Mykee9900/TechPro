@@ -9,8 +9,8 @@ const activeTab = () => {
     let currentTab = "";
     let url = new URL(currentUrl);
     let path = url.pathname;
-    
-    switch(path){
+
+    switch (path) {
         case "/About":
             currentTab = document.getElementById("about");
             currentTab.classList.add("nav-link", "active");
@@ -41,14 +41,18 @@ const closeForm = () => {
     document.getElementById("myForm").style.display = "none";
 }
 
-// code is not reading the if statements correctly
 const cartPopUP = () => {
     let element = document.getElementById("cartPopup");
     if (getComputedStyle(element).display === "block") {
         document.getElementById("cartPopup").style.display = "none";
-    } 
-    else if (getComputedStyle(element).display === "none") {
+    } else if (getComputedStyle(element).display === "none") {
         document.getElementById("cartPopup").style.display = "block";
     }
+}
+
+const cartList = () => {
+    let cart = document.getElementById("lblCartCount");
+    let cartList = [];
+    cart.value = cartList.length;
 }
     

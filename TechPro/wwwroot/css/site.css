@@ -1,236 +1,281 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 footer {
-  background-color: rgba(0, 140, 186, 1);
-  height: 60px;
-  text-align: center;
-  align-content: center;
-  margin-top: 15px;
+    background-color: rgba(0, 140, 186, 1);
+    height: 60px;
+    text-align: center;
+    align-content: center;
+    margin-top: 15px;
 }
 
 footer a {
-  color: white;
-  text-decoration: underline;
+    color: white;
+    text-decoration: underline;
 }
 
 .homeBody, .aboutBody, .contactBody, .productBody, .servicesBody {
-  background-color: black;
-  color: rgba(0,140,186,1);
+    background-color: black;
+    color: rgba(0, 140, 186, 1);
 }
 
 .aboutBody, .contactBody, .productBody, .servicesBody {
-  text-align: center;
+    text-align: center;
 }
 
 .contactBody {
-  margin: 150px 0 148px 0;
+    margin: 150px 0 148px 0;
 }
 
 .info {
-  display: flex;
-  flex-flow: column;
-  align-items: center;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
 }
 
 .aboutBody h1, .contactBody h1, .productBody h1, .servicesBody h1 {
-  margin: 30px 0 30px 0;
-  color: white;
+    margin: 30px 0 30px 0;
+    color: white;
 
 }
 
 .aboutInfo h3 {
-  color: white;
+    color: white;
 }
 
 .aboutInfo {
-  width: 900px;
-  text-wrap: normal;
-  margin: 30px 30px 75px 30px;
+    width: 900px;
+    text-wrap: normal;
+    margin: 30px 30px 75px 30px;
 }
 
 .left {
-  float: left;
+    float: left;
 }
 
 .right {
-  float: right;
+    float: right;
 }
 
 .logo {
-  border-radius: 90px;
-  border: solid 3px black;
-  height: 80px;
-  width: 100px;
+    border-radius: 90px;
+    border: solid 3px black;
+    height: 80px;
+    width: 100px;
 }
 
 .homeBackground {
-  background-image: url("homeBackground.jpg");
-  background-size: contain;
-  height: 150px;
-  text-align: center;
-  padding: 50px;
-  color: white;
-  font-family: fantasy;
-  font-size: xxx-large;
+    background-image: url("homeBackground.jpg");
+    background-size: contain;
+    height: 150px;
+    text-align: center;
+    padding: 50px;
+    color: white;
+    font-family: fantasy;
+    font-size: xxx-large;
 }
 
-.hSection h3, .equipment h3, .networks h3{
-  text-align: center;
-  margin: 30px;
-  border-bottom: solid 3px;
+.hSection h3, .equipment h3, .networks h3 {
+    text-align: center;
+    margin: 30px;
+    border-bottom: solid 3px;
 }
 
 .imageSection, .figures {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .homeImg {
-  height: 250px;
-  max-width: 350px;
-  border: solid rgba(0, 140, 186, 1) 10px;
-  border-radius: 20px;
-  margin: 15px;
+    height: 250px;
+    max-width: 350px;
+    border: solid rgba(0, 140, 186, 1) 10px;
+    border-radius: 20px;
+    margin: 15px;
 }
 
 .founders {
-  display: flex;
-  justify-content: space-around;
-  align-items: baseline;
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
 }
 
 .founderInfo {
-  width: 1000px;
-  padding: 20px;
+    width: 1000px;
+    padding: 20px;
 }
 
 .founderInfo h6 {
-  font-size: larger;
-  font-style: italic;
+    font-size: larger;
+    font-style: italic;
 }
 
 figure {
-  margin: 0 0 1rem;
-  width: 400px;
-  text-align: center;
+    margin: 0 0 1rem;
+    width: 400px;
+    text-align: center;
 }
 
 .contactBio {
-  color: white;
-  font-size: larger;
-  margin-top: 50px;
-  text-wrap: normal;
+    color: white;
+    font-size: larger;
+    margin-top: 50px;
+    text-wrap: normal;
 }
 
-.contactBio h6{
-  font-size: larger;
+.contactBio h6 {
+    font-size: larger;
 }
 
 .contactInfo {
-  font-size: large;
-  color: white;
-  margin: 100px 0 239px 0;
+    font-size: large;
+    color: white;
+    margin: 100px 0 239px 0;
 }
 
-{box-sizing: border-box;}
+{
+    box-sizing: border-box
+;
+}
 
 /* Button used to open the chat form - fixed at the bottom of the page */
 .open-button {
-  background-color: white;
-  color: rgba(0,140,186,1);
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  opacity: 0.8;
-  position: fixed;
-  bottom: 23px;
-  left: 25px;
-  width: 280px;
+    background-color: white;
+    color: rgba(0, 140, 186, 1);
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 0.8;
+    position: fixed;
+    bottom: 23px;
+    left: 25px;
+    width: 280px;
 }
 
 /* The popup chat - hidden by default */
 .form-popup {
-  display: none;
-  position: fixed;
-  bottom: 0;
-  right: 15px;
-  border: 3px solid #f1f1f1;
-  z-index: 9;
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 15px;
+    border: 3px solid #f1f1f1;
+    z-index: 9;
 }
 
 /* Add styles to the form container */
 .form-container {
-  max-width: 300px;
-  padding: 10px;
-  background-color: white;
+    max-width: 300px;
+    padding: 10px;
+    background-color: white;
 }
 
 /* Full-width textarea */
 .form-container textarea {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  border: none;
-  background: #f1f1f1;
-  resize: none;
-  min-height: 200px;
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+    resize: none;
+    min-height: 200px;
 }
 
 /* When the textarea gets focus, do something */
 .form-container textarea:focus {
-  background-color: #ddd;
-  outline: none;
+    background-color: #ddd;
+    outline: none;
 }
 
 /* Set a style for the submit/login button */
 .form-container .btn {
-  background-color: #04AA6D;
-  color: white;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  margin-bottom:10px;
-  opacity: 0.8;
-}  
+    background-color: #04AA6D;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 10px;
+    opacity: 0.8;
+}
 
 .chat-popup {
-  display: none;
-  position: fixed;
-  bottom: 0;
-  left: 25px;
-  border: 3px solid #f1f1f1;
-  z-index: 9;
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 25px;
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+}
+
+.checkOutBtn {
+    color: white;
+    border: solid 3px black;
+    height: 60px;
+    font-size: 12px;
+    font-style: oblique;
+    padding: 2px;
+    margin: 30px 0 0 90px;
+    width: 100px;
+    background-color: rgba(0, 140, 186, 1);
 }
 
 /* Add a red background color to the cancel button */
 .form-container .cancel {
-  background-color: red;
+    background-color: red;
 }
 
 /* Add some hover effects to buttons */
 .form-container .btn:hover, .open-button:hover {
-  opacity: 1;
+    opacity: 1;
 }
 
 #cartPopup {
-  display: none;
+    display: none;
+    width: 300px;
+    border: solid 5px black;
+    height: 150px;
+    position: absolute;
+    top: 15px;
+    right: 5px;
+    background-color: white;
+    color: black;
+}
+
+.badge {
+    padding-left: 9px;
+    padding-right: 9px;
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
+    border-radius: 9px;
+}
+
+.label-warning[href],
+.badge-warning[href] {
+    background-color: #c67605;
+}
+
+#lblCartCount {
+    font-size: 12px;
+    background: #ff0000;
+    color: #fff;
+    padding: 0 5px;
+    vertical-align: top;
+    margin-left: -10px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }

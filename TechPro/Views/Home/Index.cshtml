@@ -34,7 +34,7 @@
             <figure>
                 <img src="images/lobby.jpg" alt="lobby" class="homeImg"/>
                 <figcaption>Tech Pro has a enjoyable lobby where customers can relax and wait.</figcaption>
-            </figure> 
+            </figure>
         </div>
     </div>
     <div class="hSection">
@@ -62,7 +62,9 @@
     <div class="chat-popup" id="myForm">
         <form asp-action="#" class="form-container">
             <h1>Chat</h1>
-            <label for="msg"><b>Message</b></label>
+            <label for="msg">
+                <b>Message</b>
+            </label>
             <textarea placeholder="Type message.." name="msg" required></textarea>
             <button type="submit" class="btn">Send</button>
             <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
