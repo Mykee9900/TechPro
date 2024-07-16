@@ -1,0 +1,15 @@
+using System.ComponentModel.DataAnnotations;
+
+namespace TechPro.Models.Data;
+
+public class NetworkPackages
+{
+    [Key]
+    public int PackageID { get; set; }
+    public string PackageName { get; set; }
+    public string PackageDescription { get; set; }
+    public int PackagePrice { get; set; }
+    
+    public ICollection<PackageProduct> PackageProduct { get; set; }
+
+}
