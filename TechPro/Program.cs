@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using TechPro.Models;
 using TechPro.Models;
 using SQLitePCL;
+using TechPro.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 

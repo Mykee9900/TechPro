@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-namespace TechPro.Models.Data;
+namespace TechPro.Data;
 
 public class OrderItems
 {
@@ -11,7 +11,7 @@ public class OrderItems
     public virtual Orders Orders { get; set; }
     public int ProductID { get; set; }
     [ForeignKey("ProductID")]
-    public virtual Products Products { get; set; }
+    public virtual Product Product { get; set; }
     public int Quantity { get; set; }
     public int price { get; set; }
 }

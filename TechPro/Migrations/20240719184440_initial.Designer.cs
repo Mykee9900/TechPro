@@ -4,15 +4,15 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using TechPro.Models;
+using TechPro.Data;
 
 #nullable disable
 
 namespace TechPro.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20240716144850_AddCategoryForeignKeys")]
-    partial class AddCategoryForeignKeys
+    [Migration("20240719184440_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,7 +20,7 @@ namespace TechPro.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.0-preview.6.24327.4");
 
-            modelBuilder.Entity("TechPro.Models.Data.CartItems", b =>
+            modelBuilder.Entity("TechPro.Data.CartItems", b =>
                 {
                     b.Property<int>("CartItemID")
                         .ValueGeneratedOnAdd()
@@ -41,10 +41,10 @@ namespace TechPro.Migrations
 
                     b.HasIndex("ProductID");
 
-                    b.ToTable("CartItems");
+                    b.ToTable("CartItem");
                 });
 
-            modelBuilder.Entity("TechPro.Models.Data.Category", b =>
+            modelBuilder.Entity("TechPro.Data.Category", b =>
                 {
                     b.Property<int>("CategoryID")
                         .ValueGeneratedOnAdd()
@@ -56,10 +56,10 @@ namespace TechPro.Migrations
 
                     b.HasKey("CategoryID");
 
-                    b.ToTable("Category");
+                    b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("TechPro.Models.Data.ChatBox", b =>
+            modelBuilder.Entity("TechPro.Data.ChatBox", b =>
                 {
                     b.Property<int>("ChatID")
                         .ValueGeneratedOnAdd()
@@ -83,10 +83,10 @@ namespace TechPro.Migrations
 
                     b.HasIndex("CustomerID");
 
-                    b.ToTable("ChatBox");
+                    b.ToTable("ChatbBoxes");
                 });
 
-            modelBuilder.Entity("TechPro.Models.Data.Customers", b =>
+            modelBuilder.Entity("TechPro.Data.Customers", b =>
                 {
                     b.Property<int>("CustID")
                         .ValueGeneratedOnAdd()
@@ -121,7 +121,7 @@ namespace TechPro.Migrations
                     b.ToTable("Customer");
                 });
 
-            modelBuilder.Entity("TechPro.Models.Data.Inventory", b =>
+            modelBuilder.Entity("TechPro.Data.Inventory", b =>
                 {
                     b.Property<int>("InventID")
                         .ValueGeneratedOnAdd()
@@ -137,10 +137,10 @@ namespace TechPro.Migrations
 
                     b.HasIndex("ProductID");
 
-                    b.ToTable("Inventory");
+                    b.ToTable("Inventories");
                 });
 
-            modelBuilder.Entity("TechPro.Models.Data.NetworkPackages", b =>
+            modelBuilder.Entity("TechPro.Data.NetworkPackages", b =>
                 {
                     b.Property<int>("PackageID")
                         .ValueGeneratedOnAdd()
@@ -159,10 +159,10 @@ namespace TechPro.Migrations
 
                     b.HasKey("PackageID");
 
-                    b.ToTable("NetworkPackage");
+                    b.ToTable("NetworkPackages");
                 });
 
-            modelBuilder.Entity("TechPro.Models.Data.NetworkType", b =>
+            modelBuilder.Entity("TechPro.Data.NetworkType", b =>
                 {
                     b.Property<int>("NetworkTypeID")
                         .ValueGeneratedOnAdd()
@@ -177,7 +177,7 @@ namespace TechPro.Migrations
                     b.ToTable("NetworkTypes");
                 });
 
-            modelBuilder.Entity("TechPro.Models.Data.OrderItems", b =>
+            modelBuilder.Entity("TechPro.Data.OrderItems", b =>
                 {
                     b.Property<int>("OrderItemID")
                         .ValueGeneratedOnAdd()
@@ -201,10 +201,10 @@ namespace TechPro.Migrations
 
                     b.HasIndex("ProductID");
 
-                    b.ToTable("OrderItems");
+                    b.ToTable("OrderItem");
                 });
 
-            modelBuilder.Entity("TechPro.Models.Data.Orders", b =>
+            modelBuilder.Entity("TechPro.Data.Orders", b =>
                 {
                     b.Property<int>("OrderID")
                         .ValueGeneratedOnAdd()
@@ -224,10 +224,10 @@ namespace TechPro.Migrations
 
                     b.HasIndex("CustomerID");
 
-                    b.ToTable("Orders");
+                    b.ToTable("Order");
                 });
 
-            modelBuilder.Entity("TechPro.Models.Data.PackageProduct", b =>
+            modelBuilder.Entity("TechPro.Data.PackageProduct", b =>
                 {
                     b.Property<int>("PackageProductID")
                         .ValueGeneratedOnAdd()
@@ -248,10 +248,10 @@ namespace TechPro.Migrations
 
                     b.HasIndex("ProductID");
 
-                    b.ToTable("PackageProduct");
+                    b.ToTable("PackageProducts");
                 });
 
-            modelBuilder.Entity("TechPro.Models.Data.Products", b =>
+            modelBuilder.Entity("TechPro.Data.Product", b =>
                 {
                     b.Property<int>("ProductId")
                         .ValueGeneratedOnAdd()
@@ -271,10 +271,10 @@ namespace TechPro.Migrations
 
                     b.HasIndex("CategoryID");
 
-                    b.ToTable("Product");
+                    b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("TechPro.Models.Data.PurchaseItems", b =>
+            modelBuilder.Entity("TechPro.Data.PurchaseItems", b =>
                 {
                     b.Property<int>("PurchaseItemID")
                         .ValueGeneratedOnAdd()
@@ -298,10 +298,10 @@ namespace TechPro.Migrations
 
                     b.HasIndex("PurchaseID");
 
-                    b.ToTable("PurchaseItems");
+                    b.ToTable("PurchaseItem");
                 });
 
-            modelBuilder.Entity("TechPro.Models.Data.Purchases", b =>
+            modelBuilder.Entity("TechPro.Data.Purchases", b =>
                 {
                     b.Property<int>("PurchaseID")
                         .ValueGeneratedOnAdd()
@@ -321,10 +321,10 @@ namespace TechPro.Migrations
 
                     b.HasIndex("CustomerID");
 
-                    b.ToTable("Purchases");
+                    b.ToTable("Purchase");
                 });
 
-            modelBuilder.Entity("TechPro.Models.Data.ShoppingCart", b =>
+            modelBuilder.Entity("TechPro.Data.ShoppingCart", b =>
                 {
                     b.Property<int>("CartID")
                         .ValueGeneratedOnAdd()
@@ -341,28 +341,28 @@ namespace TechPro.Migrations
                     b.ToTable("ShoppingCarts");
                 });
 
-            modelBuilder.Entity("TechPro.Models.Data.CartItems", b =>
+            modelBuilder.Entity("TechPro.Data.CartItems", b =>
                 {
-                    b.HasOne("TechPro.Models.Data.ShoppingCart", "ShoppingCart")
+                    b.HasOne("TechPro.Data.ShoppingCart", "ShoppingCart")
                         .WithMany("CartItems")
                         .HasForeignKey("CartID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("TechPro.Models.Data.Products", "Products")
+                    b.HasOne("TechPro.Data.Product", "Product")
                         .WithMany("CartItems")
                         .HasForeignKey("ProductID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Products");
+                    b.Navigation("Product");
 
                     b.Navigation("ShoppingCart");
                 });
 
-            modelBuilder.Entity("TechPro.Models.Data.ChatBox", b =>
+            modelBuilder.Entity("TechPro.Data.ChatBox", b =>
                 {
-                    b.HasOne("TechPro.Models.Data.Customers", "Customers")
+                    b.HasOne("TechPro.Data.Customers", "Customers")
                         .WithMany("ChatBox")
                         .HasForeignKey("CustomerID")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -371,26 +371,26 @@ namespace TechPro.Migrations
                     b.Navigation("Customers");
                 });
 
-            modelBuilder.Entity("TechPro.Models.Data.Inventory", b =>
+            modelBuilder.Entity("TechPro.Data.Inventory", b =>
                 {
-                    b.HasOne("TechPro.Models.Data.Products", "Products")
+                    b.HasOne("TechPro.Data.Product", "Product")
                         .WithMany("Inventory")
                         .HasForeignKey("ProductID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Products");
+                    b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("TechPro.Models.Data.OrderItems", b =>
+            modelBuilder.Entity("TechPro.Data.OrderItems", b =>
                 {
-                    b.HasOne("TechPro.Models.Data.Orders", "Orders")
+                    b.HasOne("TechPro.Data.Orders", "Orders")
                         .WithMany("OrderItems")
                         .HasForeignKey("OrderID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("TechPro.Models.Data.Products", "Products")
+                    b.HasOne("TechPro.Data.Product", "Product")
                         .WithMany("OrderItems")
                         .HasForeignKey("ProductID")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -398,12 +398,12 @@ namespace TechPro.Migrations
 
                     b.Navigation("Orders");
 
-                    b.Navigation("Products");
+                    b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("TechPro.Models.Data.Orders", b =>
+            modelBuilder.Entity("TechPro.Data.Orders", b =>
                 {
-                    b.HasOne("TechPro.Models.Data.Customers", "Customers")
+                    b.HasOne("TechPro.Data.Customers", "Customers")
                         .WithMany("Orders")
                         .HasForeignKey("CustomerID")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -412,15 +412,15 @@ namespace TechPro.Migrations
                     b.Navigation("Customers");
                 });
 
-            modelBuilder.Entity("TechPro.Models.Data.PackageProduct", b =>
+            modelBuilder.Entity("TechPro.Data.PackageProduct", b =>
                 {
-                    b.HasOne("TechPro.Models.Data.NetworkPackages", "NetworkPackages")
+                    b.HasOne("TechPro.Data.NetworkPackages", "NetworkPackages")
                         .WithMany("PackageProduct")
                         .HasForeignKey("PackageID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("TechPro.Models.Data.Products", "Products")
+                    b.HasOne("TechPro.Data.Product", "Product")
                         .WithMany("PackageProduct")
                         .HasForeignKey("ProductID")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -428,12 +428,12 @@ namespace TechPro.Migrations
 
                     b.Navigation("NetworkPackages");
 
-                    b.Navigation("Products");
+                    b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("TechPro.Models.Data.Products", b =>
+            modelBuilder.Entity("TechPro.Data.Product", b =>
                 {
-                    b.HasOne("TechPro.Models.Data.Category", "Category")
+                    b.HasOne("TechPro.Data.Category", "Category")
                         .WithMany("Products")
                         .HasForeignKey("CategoryID")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -442,28 +442,28 @@ namespace TechPro.Migrations
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("TechPro.Models.Data.PurchaseItems", b =>
+            modelBuilder.Entity("TechPro.Data.PurchaseItems", b =>
                 {
-                    b.HasOne("TechPro.Models.Data.Products", "Products")
+                    b.HasOne("TechPro.Data.Product", "Product")
                         .WithMany("PurchaseItems")
                         .HasForeignKey("ProductID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("TechPro.Models.Data.Purchases", "Purchases")
+                    b.HasOne("TechPro.Data.Purchases", "Purchases")
                         .WithMany("PurchaseItems")
                         .HasForeignKey("PurchaseID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Products");
+                    b.Navigation("Product");
 
                     b.Navigation("Purchases");
                 });
 
-            modelBuilder.Entity("TechPro.Models.Data.Purchases", b =>
+            modelBuilder.Entity("TechPro.Data.Purchases", b =>
                 {
-                    b.HasOne("TechPro.Models.Data.Customers", "Customers")
+                    b.HasOne("TechPro.Data.Customers", "Customers")
                         .WithMany("Purchases")
                         .HasForeignKey("CustomerID")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -472,12 +472,12 @@ namespace TechPro.Migrations
                     b.Navigation("Customers");
                 });
 
-            modelBuilder.Entity("TechPro.Models.Data.Category", b =>
+            modelBuilder.Entity("TechPro.Data.Category", b =>
                 {
                     b.Navigation("Products");
                 });
 
-            modelBuilder.Entity("TechPro.Models.Data.Customers", b =>
+            modelBuilder.Entity("TechPro.Data.Customers", b =>
                 {
                     b.Navigation("ChatBox");
 
@@ -486,17 +486,17 @@ namespace TechPro.Migrations
                     b.Navigation("Purchases");
                 });
 
-            modelBuilder.Entity("TechPro.Models.Data.NetworkPackages", b =>
+            modelBuilder.Entity("TechPro.Data.NetworkPackages", b =>
                 {
                     b.Navigation("PackageProduct");
                 });
 
-            modelBuilder.Entity("TechPro.Models.Data.Orders", b =>
+            modelBuilder.Entity("TechPro.Data.Orders", b =>
                 {
                     b.Navigation("OrderItems");
                 });
 
-            modelBuilder.Entity("TechPro.Models.Data.Products", b =>
+            modelBuilder.Entity("TechPro.Data.Product", b =>
                 {
                     b.Navigation("CartItems");
 
@@ -509,12 +509,12 @@ namespace TechPro.Migrations
                     b.Navigation("PurchaseItems");
                 });
 
-            modelBuilder.Entity("TechPro.Models.Data.Purchases", b =>
+            modelBuilder.Entity("TechPro.Data.Purchases", b =>
                 {
                     b.Navigation("PurchaseItems");
                 });
 
-            modelBuilder.Entity("TechPro.Models.Data.ShoppingCart", b =>
+            modelBuilder.Entity("TechPro.Data.ShoppingCart", b =>
                 {
                     b.Navigation("CartItems");
                 });

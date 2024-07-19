@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace TechPro.Models.Data;
+namespace TechPro.Data;
 
 public class Category
 {
@@ -8,5 +8,5 @@ public class Category
     public int CategoryID { get; set; }
     public string CategoryName { get; set; }
     
-    public virtual ICollection<Products> Products { get; set; }
+    public virtual ICollection<Product> Products { get; set; }
 }

@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
 
-namespace TechPro.Models.Data;
+namespace TechPro.Data;
 
 
 public class CartItems
@@ -14,6 +14,6 @@ public class CartItems
     public virtual ShoppingCart ShoppingCart { get; set; }
     public int ProductID { get; set; }
     [ForeignKey("ProductID")]
-    public virtual Products Products { get; set; }
+    public virtual Product Product { get; set; }
     public int Quantity { get; set; }
 }

@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-namespace TechPro.Models.Data;
+namespace TechPro.Data;
 
 public class Purchases
 {

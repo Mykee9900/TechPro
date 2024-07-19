@@ -6,13 +6,13 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace TechPro.Migrations
 {
     /// <inheritdoc />
-    public partial class AddCategoryForeignKeys : Migration
+    public partial class initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Category",
+                name: "Categories",
                 columns: table => new
                 {
                     CategoryID = table.Column<int>(type: "INTEGER", nullable: false)
@@ -21,7 +21,7 @@ namespace TechPro.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Category", x => x.CategoryID);
+                    table.PrimaryKey("PK_Categories", x => x.CategoryID);
                 });
 
             migrationBuilder.CreateTable(
@@ -43,7 +43,7 @@ namespace TechPro.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "NetworkPackage",
+                name: "NetworkPackages",
                 columns: table => new
                 {
                     PackageID = table.Column<int>(type: "INTEGER", nullable: false)
@@ -54,7 +54,7 @@ namespace TechPro.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_NetworkPackage", x => x.PackageID);
+                    table.PrimaryKey("PK_NetworkPackages", x => x.PackageID);
                 });
 
             migrationBuilder.CreateTable(
@@ -85,7 +85,7 @@ namespace TechPro.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Product",
+                name: "Products",
                 columns: table => new
                 {
                     ProductId = table.Column<int>(type: "INTEGER", nullable: false)
@@ -96,17 +96,17 @@ namespace TechPro.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Product", x => x.ProductId);
+                    table.PrimaryKey("PK_Products", x => x.ProductId);
                     table.ForeignKey(
-                        name: "FK_Product_Category_CategoryID",
+                        name: "FK_Products_Categories_CategoryID",
                         column: x => x.CategoryID,
-                        principalTable: "Category",
+                        principalTable: "Categories",
                         principalColumn: "CategoryID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "ChatBox",
+                name: "ChatbBoxes",
                 columns: table => new
                 {
                     ChatID = table.Column<int>(type: "INTEGER", nullable: false)
@@ -118,9 +118,9 @@ namespace TechPro.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ChatBox", x => x.ChatID);
+                    table.PrimaryKey("PK_ChatbBoxes", x => x.ChatID);
                     table.ForeignKey(
-                        name: "FK_ChatBox_Customer_CustomerID",
+                        name: "FK_ChatbBoxes_Customer_CustomerID",
                         column: x => x.CustomerID,
                         principalTable: "Customer",
                         principalColumn: "CustID",
@@ -128,7 +128,7 @@ namespace TechPro.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Orders",
+                name: "Order",
                 columns: table => new
                 {
                     OrderID = table.Column<int>(type: "INTEGER", nullable: false)
@@ -139,9 +139,9 @@ namespace TechPro.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Orders", x => x.OrderID);
+                    table.PrimaryKey("PK_Order", x => x.OrderID);
                     table.ForeignKey(
-                        name: "FK_Orders_Customer_CustomerID",
+                        name: "FK_Order_Customer_CustomerID",
                         column: x => x.CustomerID,
                         principalTable: "Customer",
                         principalColumn: "CustID",
@@ -149,7 +149,7 @@ namespace TechPro.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Purchases",
+                name: "Purchase",
                 columns: table => new
                 {
                     PurchaseID = table.Column<int>(type: "INTEGER", nullable: false)
@@ -160,9 +160,9 @@ namespace TechPro.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Purchases", x => x.PurchaseID);
+                    table.PrimaryKey("PK_Purchase", x => x.PurchaseID);
                     table.ForeignKey(
-                        name: "FK_Purchases_Customer_CustomerID",
+                        name: "FK_Purchase_Customer_CustomerID",
                         column: x => x.CustomerID,
                         principalTable: "Customer",
                         principalColumn: "CustID",
@@ -170,7 +170,7 @@ namespace TechPro.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "CartItems",
+                name: "CartItem",
                 columns: table => new
                 {
                     CartItemID = table.Column<int>(type: "INTEGER", nullable: false)
@@ -181,15 +181,15 @@ namespace TechPro.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CartItems", x => x.CartItemID);
+                    table.PrimaryKey("PK_CartItem", x => x.CartItemID);
                     table.ForeignKey(
-                        name: "FK_CartItems_Product_ProductID",
+                        name: "FK_CartItem_Products_ProductID",
                         column: x => x.ProductID,
-                        principalTable: "Product",
+                        principalTable: "Products",
                         principalColumn: "ProductId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_CartItems_ShoppingCarts_CartID",
+                        name: "FK_CartItem_ShoppingCarts_CartID",
                         column: x => x.CartID,
                         principalTable: "ShoppingCarts",
                         principalColumn: "CartID",
@@ -197,7 +197,7 @@ namespace TechPro.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Inventory",
+                name: "Inventories",
                 columns: table => new
                 {
                     InventID = table.Column<int>(type: "INTEGER", nullable: false)
@@ -207,17 +207,17 @@ namespace TechPro.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Inventory", x => x.InventID);
+                    table.PrimaryKey("PK_Inventories", x => x.InventID);
                     table.ForeignKey(
-                        name: "FK_Inventory_Product_ProductID",
+                        name: "FK_Inventories_Products_ProductID",
                         column: x => x.ProductID,
-                        principalTable: "Product",
+                        principalTable: "Products",
                         principalColumn: "ProductId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "PackageProduct",
+                name: "PackageProducts",
                 columns: table => new
                 {
                     PackageProductID = table.Column<int>(type: "INTEGER", nullable: false)
@@ -228,23 +228,23 @@ namespace TechPro.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PackageProduct", x => x.PackageProductID);
+                    table.PrimaryKey("PK_PackageProducts", x => x.PackageProductID);
                     table.ForeignKey(
-                        name: "FK_PackageProduct_NetworkPackage_PackageID",
+                        name: "FK_PackageProducts_NetworkPackages_PackageID",
                         column: x => x.PackageID,
-                        principalTable: "NetworkPackage",
+                        principalTable: "NetworkPackages",
                         principalColumn: "PackageID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_PackageProduct_Product_ProductID",
+                        name: "FK_PackageProducts_Products_ProductID",
                         column: x => x.ProductID,
-                        principalTable: "Product",
+                        principalTable: "Products",
                         principalColumn: "ProductId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "OrderItems",
+                name: "OrderItem",
                 columns: table => new
                 {
                     OrderItemID = table.Column<int>(type: "INTEGER", nullable: false)
@@ -256,23 +256,23 @@ namespace TechPro.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_OrderItems", x => x.OrderItemID);
+                    table.PrimaryKey("PK_OrderItem", x => x.OrderItemID);
                     table.ForeignKey(
-                        name: "FK_OrderItems_Orders_OrderID",
+                        name: "FK_OrderItem_Order_OrderID",
                         column: x => x.OrderID,
-                        principalTable: "Orders",
+                        principalTable: "Order",
                         principalColumn: "OrderID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_OrderItems_Product_ProductID",
+                        name: "FK_OrderItem_Products_ProductID",
                         column: x => x.ProductID,
-                        principalTable: "Product",
+                        principalTable: "Products",
                         principalColumn: "ProductId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "PurchaseItems",
+                name: "PurchaseItem",
                 columns: table => new
                 {
                     PurchaseItemID = table.Column<int>(type: "INTEGER", nullable: false)
@@ -284,128 +284,128 @@ namespace TechPro.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PurchaseItems", x => x.PurchaseItemID);
+                    table.PrimaryKey("PK_PurchaseItem", x => x.PurchaseItemID);
                     table.ForeignKey(
-                        name: "FK_PurchaseItems_Product_ProductID",
+                        name: "FK_PurchaseItem_Products_ProductID",
                         column: x => x.ProductID,
-                        principalTable: "Product",
+                        principalTable: "Products",
                         principalColumn: "ProductId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_PurchaseItems_Purchases_PurchaseID",
+                        name: "FK_PurchaseItem_Purchase_PurchaseID",
                         column: x => x.PurchaseID,
-                        principalTable: "Purchases",
+                        principalTable: "Purchase",
                         principalColumn: "PurchaseID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_CartItems_CartID",
-                table: "CartItems",
+                name: "IX_CartItem_CartID",
+                table: "CartItem",
                 column: "CartID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_CartItems_ProductID",
-                table: "CartItems",
+                name: "IX_CartItem_ProductID",
+                table: "CartItem",
                 column: "ProductID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ChatBox_CustomerID",
-                table: "ChatBox",
+                name: "IX_ChatbBoxes_CustomerID",
+                table: "ChatbBoxes",
                 column: "CustomerID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Inventory_ProductID",
-                table: "Inventory",
+                name: "IX_Inventories_ProductID",
+                table: "Inventories",
                 column: "ProductID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OrderItems_OrderID",
-                table: "OrderItems",
+                name: "IX_Order_CustomerID",
+                table: "Order",
+                column: "CustomerID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OrderItem_OrderID",
+                table: "OrderItem",
                 column: "OrderID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OrderItems_ProductID",
-                table: "OrderItems",
+                name: "IX_OrderItem_ProductID",
+                table: "OrderItem",
                 column: "ProductID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Orders_CustomerID",
-                table: "Orders",
-                column: "CustomerID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_PackageProduct_PackageID",
-                table: "PackageProduct",
+                name: "IX_PackageProducts_PackageID",
+                table: "PackageProducts",
                 column: "PackageID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PackageProduct_ProductID",
-                table: "PackageProduct",
+                name: "IX_PackageProducts_ProductID",
+                table: "PackageProducts",
                 column: "ProductID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Product_CategoryID",
-                table: "Product",
+                name: "IX_Products_CategoryID",
+                table: "Products",
                 column: "CategoryID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PurchaseItems_ProductID",
-                table: "PurchaseItems",
+                name: "IX_Purchase_CustomerID",
+                table: "Purchase",
+                column: "CustomerID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PurchaseItem_ProductID",
+                table: "PurchaseItem",
                 column: "ProductID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PurchaseItems_PurchaseID",
-                table: "PurchaseItems",
+                name: "IX_PurchaseItem_PurchaseID",
+                table: "PurchaseItem",
                 column: "PurchaseID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Purchases_CustomerID",
-                table: "Purchases",
-                column: "CustomerID");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "CartItems");
+                name: "CartItem");
 
             migrationBuilder.DropTable(
-                name: "ChatBox");
+                name: "ChatbBoxes");
 
             migrationBuilder.DropTable(
-                name: "Inventory");
+                name: "Inventories");
 
             migrationBuilder.DropTable(
                 name: "NetworkTypes");
 
             migrationBuilder.DropTable(
-                name: "OrderItems");
+                name: "OrderItem");
 
             migrationBuilder.DropTable(
-                name: "PackageProduct");
+                name: "PackageProducts");
 
             migrationBuilder.DropTable(
-                name: "PurchaseItems");
+                name: "PurchaseItem");
 
             migrationBuilder.DropTable(
                 name: "ShoppingCarts");
 
             migrationBuilder.DropTable(
-                name: "Orders");
+                name: "Order");
 
             migrationBuilder.DropTable(
-                name: "NetworkPackage");
+                name: "NetworkPackages");
 
             migrationBuilder.DropTable(
-                name: "Product");
+                name: "Products");
 
             migrationBuilder.DropTable(
-                name: "Purchases");
+                name: "Purchase");
 
             migrationBuilder.DropTable(
-                name: "Category");
+                name: "Categories");
 
             migrationBuilder.DropTable(
                 name: "Customer");

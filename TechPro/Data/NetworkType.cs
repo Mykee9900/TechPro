@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace TechPro.Models.Data;
+namespace TechPro.Data;
 
 public class NetworkType
 {
