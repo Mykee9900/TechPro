@@ -1,33 +1,50 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
+using System.Threading.Tasks;
 using TechPro.Data;
 using TechPro.Models;
 
-namespace TechPro.Controllers;
-
-public class ProductController : Controller
+namespace TechPro.Controllers
 {
-    private readonly Context _context;
+    public class ProductController : Controller
+    {
+        private readonly Context _context;
 
-    public ProductController(Context context)
-    {
-        _context = context;
-    }
+        public ProductController(Context context)
+        {
+            _context = context;
+        }
 
-    [HttpPost]
-    public async Task<List<Product>> GetProductsAsync()
-    {
-        return await _context.Products.ToListAsync();
-    }
-    public async Task<IActionResult> Index(ProductsViewModel vm)
-    {
-        var products = await GetProductsAsync();
-        vm.Products = products;
-        return View(vm);
-    }
+        public async Task<IActionResult> Index()
+        {
+            var products = await _context.Products.ToListAsync();
+            var viewModel = new ProductsViewModel
+            {
+                Products = products
+            };
 
-    public IActionResult CartACtion()
-    {
-        return View("~/Views/Product/Index.cshtml");
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CartAction(int productId)
+        {
+            var product = await _context.Products.FindAsync(productId);
+            if (product == null)
+            {
+                ViewBag.ShowErrorModal = true;
+                ViewBag.ErrorMessage = "The selected product does not exist.";
+                return View("Index", new ProductsViewModel { Products = await _context.Products.ToListAsync() });
+            }
+
+            var products = await _context.Products.ToListAsync();
+            var viewModel = new ProductsViewModel
+            {
+                Products = products
+            };
+
+            return View("Index", viewModel);
+        }
     }
 }

@@ -1,21 +1,48 @@
-@Model TechPro.Models.ProductViewModel
+@model TechPro.Models.ProductsViewModel
+@{
+    Layout = "_Layout";
+}
 
 <div class="productBody">
     <h1>Our Products</h1>
     <div class="networks">
         <h3>Networks</h3>
-        <div class="figures">
-            <figure>
-                <img src="images/product2.png" alt="small network" class="homeImg">
-                <figcaption>We offer a small network that is ideal for small companies</figcaption>
-                <a asp-action="" asp-controller="" class="btn btn-primary" id="">Add to cart</a>
-            </figure>
-            <figure>
-                <img src="images/product1.png" alt="large network" class="homeImg"/>
-                <figcaption>We offer a large network that is ideal for large companies</figcaption>
-                <a asp-action="" asp-controller="" class="btn btn-primary" id="netWorkOne">Add to cart</a>
-            </figure>
-        </div>
+        @if (@Model?.NetworkProducts != null && @Model.NetworkProducts.Any())
+        {
+            @foreach (var network in @Model.NetworkProducts)
+            {
+                <div class="figures">
+                    @if (network.ProductName == "Small Network")
+                    {
+                        <figure>
+                            <p>@network.ProductName</p>
+                            <img src="images/product2.png" alt="small network" class="homeImg">
+                            <figcaption>We offer a small network that is ideal for small companies</figcaption>
+                            <form method="post" asp-action="CartAction" asp-controller="Product">
+                                <input type="hidden" name="productId" value="@network.ProductId" />
+                                <button type="submit" class="btn btn-primary">Add to cart</button>
+                            </form>
+                        </figure>
+                    }
+                    else if (network.ProductName == "Large Network")
+                    {
+                        <figure>
+                            <p>@network.ProductName</p>
+                            <img src="images/product1.png" alt="large network" class="homeImg"/>
+                            <figcaption>We offer a large network that is ideal for large companies</figcaption>
+                            <form method="post" asp-action="CartAction" asp-controller="Product">
+                                <input type="hidden" name="productId" value="@network.ProductId" />
+                                <button type="submit" class="btn btn-primary">Add to cart</button>
+                            </form>
+                        </figure>
+                    }
+                </div>
+            }
+        }
+        else
+        {
+            <h3>No networks to display</h3>
+        }
     </div>
     <div class="equipment">
         <h3>Equipment</h3>
