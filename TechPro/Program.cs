@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using TechPro.Models;
-using TechPro.Models;
 using SQLitePCL;
 using TechPro.Data;
 
@@ -12,6 +11,15 @@ Batteries_V2.Init();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// Add session services
+builder.Services.AddDistributedMemoryCache(); // You can use other session stores like Redis, etc.
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30); // Set session timeout
+    options.Cookie.HttpOnly = true; // Make the session cookie HTTP only
+    options.Cookie.IsEssential = true; // Essential for GDPR compliance
+});
 
 builder.Services.AddDbContext<Context>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -29,6 +37,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseSession();
 
 app.UseAuthorization();
 

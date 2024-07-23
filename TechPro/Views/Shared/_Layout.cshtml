@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="~/css/bootStrapTheme.css"/>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
 </head>
-<body onload="activeTab()">
+<body>
 <header>
     <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
         <div class="container-fluid">
@@ -40,16 +40,18 @@
                     <i class="fa-solid fa-cart-shopping fa-bounce fa-lg" style="color: #ffffff; margin: 15px">
                         <div id="cartPopup">
                             <div class="items">
-                                <img src="" alt="" class="cartImg"/>
-                                <p></p>
+                                @await Component.InvokeAsync("CartItems")
                             </div>
                             <div class="checkout">
                                 <p></p>
                                 <button class="checkOutBtn">Checkout</button>
+                                <button class="checkOutBtn">Reset Cart</button>
                             </div>
                         </div>
                     </i>
-                    <span class="badge badge-warning" id="lblCartCount">0</span>
+                    <span class="badge badge-warning" id="lblCartCount">
+                        @(ViewContext.HttpContext.Session.GetInt32("CartItemCount") ?? 0)
+                    </span>
                 </a>
                 <form class="d-flex">
                     <input class="form-control me-sm-2" type="search" placeholder="Search">
@@ -59,7 +61,7 @@
         </div>
     </nav>
 </header>
-<div @*class="container" *@>
+<div>
     <main role="main" class="pb-3">
         @RenderBody()
     </main>
@@ -72,8 +74,39 @@
 <script src="https://kit.fontawesome.com/869d23ac57.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
+<script>
+    $(document).ready(function () {
+        function updateCart() {
+            $.ajax({
+                url: '@Url.Action("GetCartItems", "Product")',
+                type: 'GET',
+                success: function (data) {
+                    $('.items').html(data);
+                },
+                error: function () {
+                    $('.items').html('<p>Error loading cart items.</p>');
+                }
+            });
+        }
+
+        $('form[asp-action="CartAction"]').submit(function (e) {
+            e.preventDefault();
+            var form = $(this);
+            $.ajax({
+                url: form.attr('action'),
+                type: form.attr('method'),
+                data: form.serialize(),
+                success: function (data) {
+                    updateCart();
+                    $('#lblCartCount').text(parseInt($('#lblCartCount').text()) + 1);
+                },
+                error: function () {
+                    alert('Error adding item to cart.');
+                }
+            });
+        });
+    });
+</script>
 @await RenderSectionAsync("Scripts", false)
 </body>
 </html>
-
-@* asp-controller="CheckOut" asp-action="Index" *@

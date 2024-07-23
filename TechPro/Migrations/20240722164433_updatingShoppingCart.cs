@@ -4,16 +4,19 @@
 
 namespace TechPro.Migrations
 {
-    /// <inheritdoc />
-    public partial class updatingShoppingCart : Migration
+    public partial class MakeCustomerIDNullable : Migration
     {
-        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_CartItem_Products_ProductID",
-                table: "CartItem");
+            migrationBuilder.AlterColumn<int>(
+                name: "CustomerID",
+                table: "ShoppingCarts",
+                type: "INTEGER",
+                nullable: true,
+                oldClrType: typeof(int),
+                oldType: "INTEGER");
 
+            // Ensure the column rename happens without creating a duplicate
             migrationBuilder.RenameColumn(
                 name: "ProductID",
                 table: "CartItem",
@@ -25,8 +28,8 @@ namespace TechPro.Migrations
                 newName: "IX_CartItem_ProductId");
 
             migrationBuilder.AlterColumn<int>(
-                name: "CustomerID",
-                table: "ShoppingCarts",
+                name: "ProductId",
+                table: "CartItem",
                 type: "INTEGER",
                 nullable: true,
                 oldClrType: typeof(int),
@@ -39,64 +42,33 @@ namespace TechPro.Migrations
                 nullable: false,
                 defaultValue: "");
 
-            migrationBuilder.AlterColumn<int>(
-                name: "ProductId",
-                table: "CartItem",
-                type: "INTEGER",
-                nullable: true,
-                oldClrType: typeof(int),
-                oldType: "INTEGER");
-
-            migrationBuilder.AddColumn<int>(
-                name: "ProductID",
-                table: "CartItem",
-                type: "INTEGER",
-                nullable: false,
-                defaultValue: 0);
-
             migrationBuilder.CreateIndex(
-                name: "IX_CartItem_ProductID",
+                name: "IX_CartItem_ProductId",
                 table: "CartItem",
-                column: "ProductID");
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_CartItem_Products_ProductID",
-                table: "CartItem",
-                column: "ProductID",
-                principalTable: "Products",
-                principalColumn: "ProductId",
-                onDelete: ReferentialAction.Cascade);
+                column: "ProductId");
 
             migrationBuilder.AddForeignKey(
                 name: "FK_CartItem_Products_ProductId",
                 table: "CartItem",
                 column: "ProductId",
                 principalTable: "Products",
-                principalColumn: "ProductId");
+                principalColumn: "ProductId",
+                onDelete: ReferentialAction.Cascade);
         }
 
-        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_CartItem_Products_ProductID",
-                table: "CartItem");
-
             migrationBuilder.DropForeignKey(
                 name: "FK_CartItem_Products_ProductId",
                 table: "CartItem");
 
             migrationBuilder.DropIndex(
-                name: "IX_CartItem_ProductID",
+                name: "IX_CartItem_ProductId",
                 table: "CartItem");
 
             migrationBuilder.DropColumn(
                 name: "SessionID",
                 table: "ShoppingCarts");
-
-            migrationBuilder.DropColumn(
-                name: "ProductID",
-                table: "CartItem");
 
             migrationBuilder.RenameColumn(
                 name: "ProductId",

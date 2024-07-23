@@ -20,5 +20,18 @@ namespace TechPro.Data
         public DbSet<PackageProduct> PackageProducts => Set<PackageProduct>();
         public DbSet<PurchaseItems>? PurchaseItem => Set<PurchaseItems>();
         public DbSet<Purchases> Purchase => Set<Purchases>();
+        
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<CartItems>()
+                .HasOne(ci => ci.ShoppingCart)
+                .WithMany(sc => sc.CartItems)
+                .HasForeignKey(ci => ci.CartID);
+
+            modelBuilder.Entity<CartItems>()
+                .HasOne(ci => ci.Product)
+                .WithMany()
+                .HasForeignKey(ci => ci.ProductID);
+        }
     }
 }

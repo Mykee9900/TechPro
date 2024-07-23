@@ -1,6 +1,10 @@
-namespace TechPro.Models;
+using System.Collections.Generic;
+using TechPro.Data;
 
-public class ShoppingCartViewModel
+namespace TechPro.Models
 {
-    
+    public class ShoppingCartViewModel
+    {
+        public List<CartItems> CartItems { get; set; } = new List<CartItems>();
+    }
 }

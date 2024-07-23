@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TechPro.Data;
 
-namespace TechPro.Components
+namespace TechPro.ViewComponents
 {
     public class CartItemsViewComponent : ViewComponent
     {

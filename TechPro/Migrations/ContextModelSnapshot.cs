@@ -29,6 +29,9 @@ namespace TechPro.Migrations
                     b.Property<int>("ProductID")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int?>("ProductId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<int>("Quantity")
                         .HasColumnType("INTEGER");
 
@@ -37,6 +40,8 @@ namespace TechPro.Migrations
                     b.HasIndex("CartID");
 
                     b.HasIndex("ProductID");
+
+                    b.HasIndex("ProductId");
 
                     b.ToTable("CartItem");
                 });
@@ -327,10 +332,14 @@ namespace TechPro.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("CustomerID")
+                    b.Property<int?>("CustomerID")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("DateTime")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("SessionID")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("CartID");
@@ -347,10 +356,14 @@ namespace TechPro.Migrations
                         .IsRequired();
 
                     b.HasOne("TechPro.Data.Product", "Product")
-                        .WithMany("CartItems")
+                        .WithMany()
                         .HasForeignKey("ProductID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("TechPro.Data.Product", null)
+                        .WithMany("CartItems")
+                        .HasForeignKey("ProductId");
 
                     b.Navigation("Product");
 
