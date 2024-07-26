@@ -48,9 +48,10 @@
                         <a class="nav-link" id="services" asp-controller="Services" asp-action="Index">Services</a>
                     </li>
                 </ul>
-                @if (User.Identity.IsAuthenticated)
+                @if (Context.Session.GetString("UserEmail") != null)
                 {
-                <a asp-action="Logout" asp-controller="Users" style="color: #ffffff;">Logout<i class="fa-regular fa-user fa-bounce" style="color: #ffffff; margin: 15px"></i></a>
+                    <a asp-action="Logout" asp-controller="Users" style="color: #ffffff;">Logout<i class="fa-regular fa-user fa-bounce" style="color: #ffffff; margin: 15px"></i></a>
+                    <a asp-action="UserAccount" asp-controller="Users" style="color: #ffffff;">Account<i class="fa-regular fa-user fa-bounce" style="color: #ffffff; margin: 15px"></i></a>
                 }
                 else
                 {

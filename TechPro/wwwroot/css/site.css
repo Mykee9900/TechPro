@@ -24,7 +24,7 @@ footer a {
     text-decoration: underline;
 }
 
-.homeBody, .aboutBody, .contactBody, .productBody, .servicesBody, .checkoutBody {
+.homeBody, .aboutBody, .contactBody, .productBody, .servicesBody, .checkoutBody, .userBody {
     background-color: black;
     color: rgba(0, 140, 186, 1);
 }
@@ -317,6 +317,10 @@ figure {
     padding: 0 5px;
     vertical-align: top;
     margin-left: -10px;
+}
+.userBody {
+    text-align: center;
+    margin: 50px 50px 480px 50px;
 }
 
 @media (min-width: 768px) {

@@ -1,1 +1,22 @@
-<div>Home</div>
+@model TechPro.Models.UsersViewModel
+
+<div class="userBody">
+    <h1>Welcome @Model.Customer.FirstName @Model.Customer.LastName</h1>
+    <h3>Your Orders</h3>
+    <ul>
+        @foreach (var order in Model.Orders)
+        {
+            <li>
+                <h4>Order ID: @order.OrderID</h4>
+                <p>Order Date: @order.OrderDate.ToString("MM/dd/yyyy")</p>
+                <p>Order Status: @order.OrderSTatus</p>
+                <ul>
+                    @foreach (var item in order.OrderItems)
+                    {
+                        <li>@item.Product.ProductName - Quantity: @item.Quantity - Price: @item.price.ToString("C")</li>
+                    }
+                </ul>
+            </li>
+        }
+    </ul>
+</div>
