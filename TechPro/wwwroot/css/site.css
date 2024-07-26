@@ -24,7 +24,7 @@ footer a {
     text-decoration: underline;
 }
 
-.homeBody, .aboutBody, .contactBody, .productBody, .servicesBody {
+.homeBody, .aboutBody, .contactBody, .productBody, .servicesBody, .checkoutBody {
     background-color: black;
     color: rgba(0, 140, 186, 1);
 }
@@ -144,9 +144,18 @@ figure {
     margin: 100px 0 239px 0;
 }
 
+.items p {
+    font-size: small;
+    margin: 30px 5px 30px 5px;
+}
+
 {
     box-sizing: border-box
 ;
+}
+
+.orderSummary {
+    color: white;
 }
 
 /* Button used to open the chat form - fixed at the bottom of the page */
@@ -218,16 +227,51 @@ figure {
     z-index: 9;
 }
 
+.checkout {
+    display: flex;
+    justify-content: space-around;
+}
+
 .checkOutBtn {
     color: white;
     border: solid 3px black;
-    height: 60px;
+    height: 50px;
     font-size: 12px;
     font-style: oblique;
     padding: 2px;
-    margin: 30px 0 0 90px;
     width: 100px;
     background-color: rgba(0, 140, 186, 1);
+}
+
+.checkoutView {
+    display: flex;
+    justify-content: space-around;
+}
+
+.express {
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 50px;
+}
+
+.express button {
+    margin: 15px;
+}
+
+#payBtn {
+    margin: 30px 400px 0 400px;
+}
+
+.orderSummary {
+    width: 400px;
+    border-left: solid 3px;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    font-size: larger;
 }
 
 /* Add a red background color to the cancel button */
@@ -250,6 +294,7 @@ figure {
     right: 5px;
     background-color: white;
     color: black;
+    overflow: scroll;
 }
 
 .badge {

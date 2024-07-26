@@ -26,7 +26,7 @@ namespace TechPro.Controllers
 
             return View(viewModel);
         }
-        
+
         [HttpPost]
         public async Task<IActionResult> CartAction(int productId)
         {
@@ -77,30 +77,25 @@ namespace TechPro.Controllers
             }
 
             await _context.SaveChangesAsync();
-
+    
             HttpContext.Session.SetInt32("CartItemCount", shoppingCart.CartItems.Sum(ci => ci.Quantity));
 
-            var products = await _context.Products.ToListAsync();
-            var viewModel = new ProductsViewModel
-            {
-                Products = products
-            };
-
             ViewBag.CartItems = shoppingCart.CartItems;
-
-            return View("Index", viewModel);
+            return RedirectToAction("Index");
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetCartItems()
+        [HttpPost]
+        public async Task<IActionResult> Reset()
         {
-            string sessionId = HttpContext.Session.GetString("SessionID");
-            var cartItems = await _context.CartItem
-                .Include(ci => ci.Product)
-                .Where(ci => ci.ShoppingCart.SessionID == sessionId)
-                .ToListAsync();
+            var cartItems = await _context.CartItem.ToListAsync();
+            if (cartItems.Count > 0)
+            {
+                _context.CartItem.RemoveRange(cartItems);
+                await _context.SaveChangesAsync();
+            }
+            HttpContext.Session.SetInt32("CartItemCount", 0);
 
-            return ViewComponent("CartItems", cartItems);
+            return RedirectToAction("Index");
         }
 
         private string GetOrCreateSessionId()

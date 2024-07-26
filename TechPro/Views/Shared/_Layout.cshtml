@@ -9,6 +9,18 @@
 </head>
 <body>
 <header>
+    <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <strong class="me-auto">Notification</strong>
+            <small>11 mins ago</small>
+            <button type="button" class="btn-close ms-2 mb-1" data-bs-dismiss="toast" aria-label="Close">
+                <span aria-hidden="true"></span>
+            </button>
+        </div>
+        <div class="toast-body">
+            @TempData["SuccessMessage"]
+        </div>
+    </div>
     <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
         <div class="container-fluid">
             <img src="~/images/Logo.jpg" alt="Company logo" class="logo"/>
@@ -36,17 +48,27 @@
                         <a class="nav-link" id="services" asp-controller="Services" asp-action="Index">Services</a>
                     </li>
                 </ul>
+                @if (User.Identity.IsAuthenticated)
+                {
+                <a asp-action="Logout" asp-controller="Users" style="color: #ffffff;">Logout<i class="fa-regular fa-user fa-bounce" style="color: #ffffff; margin: 15px"></i></a>
+                }
+                else
+                {
+                <a asp-action="Index" asp-controller="Users" style="color: #ffffff;">Login<i class="fa-regular fa-user fa-bounce" style="color: #ffffff; margin: 15px"></i></a>
+                }
                 <a onclick="cartPopUP()">
                     <i class="fa-solid fa-cart-shopping fa-bounce fa-lg" style="color: #ffffff; margin: 15px">
                         <div id="cartPopup">
                             <div class="items">
                                 @await Component.InvokeAsync("CartItems")
                             </div>
-                            <div class="checkout">
-                                <p></p>
-                                <button class="checkOutBtn">Checkout</button>
-                                <button class="checkOutBtn">Reset Cart</button>
-                            </div>
+                            <form method="post">
+                                <div class="checkout">
+                                    <p></p>
+                                    <button class="checkOutBtn" asp-action="Index" asp-controller="CheckOut">Checkout</button>
+                                    <button class="checkOutBtn" asp-action="Reset" asp-controller="Product">Reset Cart</button>
+                                </div>
+                            </form>
                         </div>
                     </i>
                     <span class="badge badge-warning" id="lblCartCount">
@@ -105,6 +127,13 @@
                 }
             });
         });
+    });
+    $(document).ready(function () {
+        if ('@TempData["SuccessMessage"]' !== '') {
+            var toastEl = document.getElementById('liveToast');
+            var toast = new bootstrap.Toast(toastEl);
+            toast.show();
+        }
     });
 </script>
 @await RenderSectionAsync("Scripts", false)
