@@ -14,13 +14,16 @@
             <img src="images/upgrade.jpeg" alt="Tech upgrades" class="homeImg"/>
             <figcaption>One of our services is technology upgrades.</figcaption>
         </figure>
+        <form method="post" asp-action="CartAction" asp-controller="Product">
         <figure>
             <img src="images/maintenance.jpg" alt="Maintenance services" class="homeImg"/>
             <figcaption>Maintenance/Warranty services.</figcaption>
+            <button type="submit" class="btn btn-primary">Add to cart</button>
         </figure>
+        </form>
         <figure>
-            <img src="images/monitoring.webp" alt="Monitoring services" class="homeImg"/>
-            <figcaption>We also have monitoring services. Which is part of maintenance and warranty service.</figcaption>
+            <img src="images/consultation.jpg" alt="Monitoring services" class="homeImg"/>
+            <figcaption>We offer a consultation plan.</figcaption>
         </figure>
     </div>
 </div>

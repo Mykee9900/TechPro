@@ -29,7 +29,7 @@ footer a {
     color: rgba(0, 140, 186, 1);
 }
 
-.aboutBody, .contactBody, .productBody, .servicesBody {
+.aboutBody, .contactBody, .productBody, .servicesBody, .orderNotes {
     text-align: center;
 }
 
@@ -269,7 +269,7 @@ figure {
     border-left: solid 3px;
     display: flex;
     flex-flow: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     font-size: larger;
 }

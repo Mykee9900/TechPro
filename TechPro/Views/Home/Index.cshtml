@@ -60,7 +60,7 @@
     </div>
     <button class="open-button" onclick="openForm()">Chat</button>
     <div class="chat-popup" id="myForm">
-        <form asp-action="#" class="form-container">
+        <form id="chatForm" class="form-container">
             <h1>Chat</h1>
             <label for="msg">
                 <b>Message</b>
@@ -71,3 +71,29 @@
         </form>
     </div>
 </div>
+
+<script>
+    function openForm() {
+        document.getElementById("myForm").style.display = "block";
+    }
+
+    function closeForm() {
+        document.getElementById("myForm").style.display = "none";
+    }
+
+    document.getElementById("chatForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        var formData = new FormData(this);
+
+        fetch('@Url.Action("SendChat", "Home")', {
+            method: 'POST',
+            body: formData,
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert("Customer message received: " + data.message);
+            closeForm();
+        })
+        .catch(error => console.error('Error:', error));
+    });
+</script>

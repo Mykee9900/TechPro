@@ -13,7 +13,7 @@ namespace TechPro.Data
         public DbSet<Customers> Customer => Set<Customers>();
         public DbSet<CartItems> CartItem => Set<CartItems>();
         public DbSet<Category> Categories => Set<Category>();
-        public DbSet<ChatBox> ChatbBoxes => Set<ChatBox>();
+        public DbSet<ChatBox> ChatBoxes => Set<ChatBox>();
         public DbSet<Inventory> Inventories => Set<Inventory>();
         public DbSet<OrderItems> OrderItem => Set<OrderItems>();
         public DbSet<Orders> Order => Set<Orders>();

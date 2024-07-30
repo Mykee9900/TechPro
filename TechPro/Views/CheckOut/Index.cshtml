@@ -87,16 +87,23 @@
         </form>
     </div>
     <div class="orderSummary">
-        @if (Model.CartItems != null && Model.CartItems.Any())
-        {
-            @foreach (var item in Model.CartItems)
+        <div class="orderNotes">
+            <h3>Notes</h3>
+            <p>Warranty if purchased will be extra 5% charged from total amount and is 3 months.</p>
+            <p>service and installation fees not included and will vary on how long an installation will take so charges will be at 24$ an hour per technician.</p>
+            <p>Servers are also not included but are recommended.</p>
+        </div>
+            @if (Model.CartItems != null && Model.CartItems.Any())
             {
-                <p>Item Name: @item.Product.ProductName</p>
-                <p>Item Quantity: @item.Quantity</p>
-                <p>Item Price: @item.Product.ProductPrice</p>
+                @foreach (var item in Model.CartItems)
+                {
+                    <p>Item Name: @item.Product.ProductName</p>
+                    <p>Item Quantity: @item.Quantity</p>
+                    <p>Item Price: @item.Product.ProductPrice</p>
+                }
+
+                <p> Total: @Model.Total.ToString("C")</p>
             }
-            <p> Total: @Model.Total.ToString("C")</p>
-        }
         else
         {
             <p>Your cart is empty.</p>
