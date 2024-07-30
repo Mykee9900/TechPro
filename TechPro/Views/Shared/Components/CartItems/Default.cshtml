@@ -1,0 +1,8 @@
+@model IEnumerable<TechPro.Data.CartItems>
+
+<div class="items">
+    @foreach (var item in Model)
+    {
+        <p>@item.Product.ProductName - Quantity: @item.Quantity</p>
+    }
+</div>

@@ -45,7 +45,7 @@
                 <p>Daniel is a expert in Cyber Security and has knowledge in Cisco products</p>
             </li>
             <li class="founderInfo">
-                <h6>Meet Elias - Director of software Engineering/ Marketing management</h6>
+                <h6>Meet Elias - Director of Software Engineering/ Marketing management</h6>
                 <p>Elias has a passion for coding which is what led him to his success as a software engineer, He also knows his way around people which is why he is good at marketing.</p>
             </li>
             <li class="founderInfo">
@@ -58,4 +58,42 @@
             </li>
         </ul>
     </div>
+    <button class="open-button" onclick="openForm()">Chat</button>
+    <div class="chat-popup" id="myForm">
+        <form id="chatForm" class="form-container">
+            <h1>Chat</h1>
+            <label for="msg">
+                <b>Message</b>
+            </label>
+            <textarea placeholder="Type message.." name="msg" required></textarea>
+            <button type="submit" class="btn">Send</button>
+            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        </form>
+    </div>
 </div>
+
+<script>
+    function openForm() {
+        document.getElementById("myForm").style.display = "block";
+    }
+
+    function closeForm() {
+        document.getElementById("myForm").style.display = "none";
+    }
+
+    document.getElementById("chatForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        var formData = new FormData(this);
+
+        fetch('@Url.Action("SendChat", "Home")', {
+            method: 'POST',
+            body: formData,
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert("Customer message received: " + data.message);
+            closeForm();
+        })
+        .catch(error => console.error('Error:', error));
+    });
+</script>

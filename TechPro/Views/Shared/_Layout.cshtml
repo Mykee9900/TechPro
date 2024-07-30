@@ -4,21 +4,34 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>@ViewData["Title"] - TechPro</title>
-    <link rel="stylesheet" href="css/bootStrapTheme.css"/>
+    <link rel="stylesheet" href="~/css/bootStrapTheme.css"/>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
 </head>
-<body onload="activeTab()">
+<body>
 <header>
+    <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <strong class="me-auto">Notification</strong>
+            <small>11 mins ago</small>
+            <button type="button" class="btn-close ms-2 mb-1" data-bs-dismiss="toast" aria-label="Close">
+                <span aria-hidden="true"></span>
+            </button>
+        </div>
+        <div class="toast-body">
+            @TempData["SuccessMessage"]
+        </div>
+    </div>
     <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
         <div class="container-fluid">
-            <img src="images/Logo.jpg" alt="Company logo" class="logo"/>
+            <img src="~/images/Logo.jpg" alt="Company logo" class="logo"/>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarColor01">
                 <ul class="navbar-nav me-auto" id="navList">
                     <li class="nav-item">
-                        <a class="nav-link"  id="about"  asp-controller="About" asp-action="Index" data-toggle="tab">About
+                        <a class="nav-link" id="about" asp-controller="About" asp-action="Index" data-toggle="tab">
+                            About
                         </a>
                     </li>
                     <li class="nav-item">
@@ -35,6 +48,34 @@
                         <a class="nav-link" id="services" asp-controller="Services" asp-action="Index">Services</a>
                     </li>
                 </ul>
+                @if (Context.Session.GetString("UserEmail") != null)
+                {
+                    <a asp-action="Logout" asp-controller="Users" style="color: #ffffff;">Logout<i class="fa-regular fa-user fa-bounce" style="color: #ffffff; margin: 15px"></i></a>
+                    <a asp-action="UserAccount" asp-controller="Users" style="color: #ffffff;">Account<i class="fa-regular fa-user fa-bounce" style="color: #ffffff; margin: 15px"></i></a>
+                }
+                else
+                {
+                <a asp-action="Index" asp-controller="Users" style="color: #ffffff;">Login<i class="fa-regular fa-user fa-bounce" style="color: #ffffff; margin: 15px"></i></a>
+                }
+                <a onclick="cartPopUP()">
+                    <i class="fa-solid fa-cart-shopping fa-bounce fa-lg" style="color: #ffffff; margin: 15px">
+                        <div id="cartPopup">
+                            <div class="items">
+                                @await Component.InvokeAsync("CartItems")
+                            </div>
+                            <form method="post">
+                                <div class="checkout">
+                                    <p></p>
+                                    <button class="checkOutBtn" asp-action="Index" asp-controller="CheckOut">Checkout</button>
+                                    <button class="checkOutBtn" asp-action="Reset" asp-controller="Product">Reset Cart</button>
+                                </div>
+                            </form>
+                        </div>
+                    </i>
+                    <span class="badge badge-warning" id="lblCartCount">
+                        @(ViewContext.HttpContext.Session.GetInt32("CartItemCount") ?? 0)
+                    </span>
+                </a>
                 <form class="d-flex">
                     <input class="form-control me-sm-2" type="search" placeholder="Search">
                     <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
@@ -43,18 +84,59 @@
         </div>
     </nav>
 </header>
-<div @*class="container" *@>
+<div>
     <main role="main" class="pb-3">
         @RenderBody()
     </main>
 </div>
 
 <footer>
-        &copy; 2024 - TechPro - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    &copy; 2024 - TechPro - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
 </footer>
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="https://kit.fontawesome.com/869d23ac57.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
-@await RenderSectionAsync("Scripts", required: false)
+<script>
+    $(document).ready(function () {
+        function updateCart() {
+            $.ajax({
+                url: '@Url.Action("GetCartItems", "Product")',
+                type: 'GET',
+                success: function (data) {
+                    $('.items').html(data);
+                },
+                error: function () {
+                    $('.items').html('<p>Error loading cart items.</p>');
+                }
+            });
+        }
+
+        $('form[asp-action="CartAction"]').submit(function (e) {
+            e.preventDefault();
+            var form = $(this);
+            $.ajax({
+                url: form.attr('action'),
+                type: form.attr('method'),
+                data: form.serialize(),
+                success: function (data) {
+                    updateCart();
+                    $('#lblCartCount').text(parseInt($('#lblCartCount').text()) + 1);
+                },
+                error: function () {
+                    alert('Error adding item to cart.');
+                }
+            });
+        });
+    });
+    $(document).ready(function () {
+        if ('@TempData["SuccessMessage"]' !== '') {
+            var toastEl = document.getElementById('liveToast');
+            var toast = new bootstrap.Toast(toastEl);
+            toast.show();
+        }
+    });
+</script>
+@await RenderSectionAsync("Scripts", false)
 </body>
 </html>
